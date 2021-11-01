@@ -11,6 +11,10 @@ import Register from './components/auth/Register';
 import Login from './components/auth/Login';
 import UserContext from './context/userContext';
 
+import ScanFaceMask from "./components/pages/Check/ScanFaceMask";
+
+import ViewData from "./components/pages/viewData/ViewData";
+
 function App() {
   const [ userData, setUserData] = useState({
     token: undefined,
@@ -49,6 +53,8 @@ function App() {
             <Route path="/dashboard" component={Dashboard} />
             <Route path="/register" component={Register} />
             <Route path="/login" component={Login} />
+            <Route path="/facemask" component={ScanFaceMask} />
+            <Route path="/viewdata" component={ViewData} />
           </Switch>
         </UserContext.Provider>
       </BrowserRouter>

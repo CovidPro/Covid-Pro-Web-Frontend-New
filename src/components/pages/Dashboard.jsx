@@ -14,13 +14,13 @@ function Dashboard () {
     return (
         <div>
             {userData.user ? (
-                <>
-                    <h1>Welcome to {userData.user.shopName}</h1>
+                <div className="Dashboard">
+                    <h1>Welcome to {userData.user.shopName}</h1><br/><br/>
                     {console.log(userData.user)}
-                    <input type="submit" value="Register" className="btn btn-primary" /><br/><br/>
-                    <input type="submit" value="Register" className="btn btn-primary" /><br/><br/>
-                    <input type="submit" value="Register" className="btn btn-primary" /><br/><br/>
-                </>
+                    <a className="btn btn-primary" href="/facemask" role="button"> Checking Process </a><br/><br/>
+                    <a className="btn btn-primary" href="/viewdata" role="button"> View Data </a><br/><br/>
+                    <a className="btn btn-primary" href="/announcement" role="button"> Announcements </a><br/><br/>
+                </div>
             ) : (
                 <>
                     <h2>You are not logged in</h2>
