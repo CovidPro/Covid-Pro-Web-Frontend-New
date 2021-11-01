@@ -1,6 +1,7 @@
 import React, { useEffect, useContext } from 'react';
 import { useHistory, Link } from 'react-router-dom';
 import UserContext from '../../context/userContext';
+import Dashboard from "./Dashboard";
 
 function Home () {
     const {userData} = useContext(UserContext);
@@ -20,11 +21,13 @@ function Home () {
                     {console.log(userData.user)}
                     {console.log(userData.user.shopName)}
                     {console.log(userData.user.shopOwner)}
-                    <h1>Welcome {userData.user.shopName}</h1>
-                    <Link to="/dashboard">Dashboard</Link>
+                    {/*<h1>Welcome {userData.user.shopName}</h1>*/}
+                    <Dashboard/>
+                    {/*<Link to="/dashboard">Dashboard</Link>*/}
                 </>
             ) : (
                 <>
+                    {/*Make home here and redirect to Login when button click*/}
                     <h2>You are not logged in</h2>
                     <Link to="/login">Login</Link>
                 </>
