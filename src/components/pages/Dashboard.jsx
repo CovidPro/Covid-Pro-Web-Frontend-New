@@ -11,6 +11,7 @@ function Dashboard () {
             history.push("/login");
 
     }, []);
+
     return (
         <div>
             {userData.user ? (

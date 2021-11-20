@@ -12,6 +12,7 @@ import Login from './components/auth/Login';
 import UserContext from './context/userContext';
 
 import ScanFaceMask from "./components/pages/Check/ScanFaceMask";
+import ScanTemprature from "./components/pages/Check/ScanTemprature";
 
 import ViewData from "./components/pages/viewData/ViewData";
 
@@ -55,6 +56,7 @@ function App() {
             <Route path="/login" component={Login} />
             <Route path="/facemask" component={ScanFaceMask} />
             <Route path="/viewdata" component={ViewData} />
+            <Route path="/next" component={ScanTemprature} />
           </Switch>
         </UserContext.Provider>
       </BrowserRouter>

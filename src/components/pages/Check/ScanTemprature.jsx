@@ -1,9 +1,9 @@
 import React, { useEffect, useContext } from 'react';
 import { useHistory, Link } from 'react-router-dom';
 import UserContext from '../../../context/userContext';
-import MaskDetection from "./maskdetectionmodule";
+import Temp from "./Temp";
 
-function ScanFaceMask () {
+function ScanTemprature () {
     const {userData} = useContext(UserContext);
     const history = useHistory();
 
@@ -21,9 +21,12 @@ function ScanFaceMask () {
                 <div className="FaceMask">
                     {console.log("Mask")}
                     {console.log(userData.user)}
-                    <h1>Scan Face Mask</h1><br/><br/>
-                    <MaskDetection/>
+
+                    <Temp temprature="12.5"/>
+
+
                     <a className="btn btn-primary" href="/next" role="button"> Checking Process </a><br/><br/>
+
                 </div>
             ) : (
                 <>
@@ -35,4 +38,4 @@ function ScanFaceMask () {
     );
 }
 
-export default ScanFaceMask;
+export default ScanTemprature;
