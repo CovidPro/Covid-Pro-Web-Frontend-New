@@ -22,11 +22,8 @@ function ScanTemprature () {
                     {console.log("Mask")}
                     {console.log(userData.user)}
 
-                    <Temp temprature="12.5"/>
-
-
-                    <a className="btn btn-primary" href="/next" role="button"> Checking Process </a><br/><br/>
-
+                    <Temp temperature="12.5"/>
+                    <br/><br/>
                 </div>
             ) : (
                 <>

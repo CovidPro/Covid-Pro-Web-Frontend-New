@@ -1,33 +1,48 @@
 import React from "react";
 
-// If props.temp is undefined, return "--"
-// Else, return props.temp
-const Temp = props => {
-  if (props.temprature === undefined) {
-    return "Detecting Temperature...";
-  }
-  else {
-      const maxBodyTemp = 37.5;
-      // if temprature is higher than body temperature, return red
-      if (props.temprature > maxBodyTemp) {
-        return (
-          <div>
-            <p className="temp-text">Temp is {props.temprature}°C. You can't go inside.</p>
-          </div>
-        );
-      }
 
-    return "Temperature is " + props.temp;
-  }
+const Temp = (props) => {
+    if (props.temperature === undefined) {
+        return (
+            <>
+                <h1>
+                    Detecting Temperature...
+                </h1>
+                <h4>
+                    Please come near the device {props.temperature}
+                </h4>
+            </>
+        )
+            ;
+    } else {
+        const maxBodyTemp = 37.5;
+        // if temperature is higher than body temperature, return red
+        if (props.temperature > maxBodyTemp) {
+            return (
+                <div>
+                    <p className="temp-text">Temp is {props.temperature}°C. You can't go inside.</p>
+                    {/*TODO: automate without button - Route to Facemask Detection*/}
+                    <a className="btn btn-primary" href="/facemask" role="button"> Checking Process </a><br/><br/>
+                </div>
+            );
+        }
+
+        return (
+            <>
+                <p className="temp-text">Temp is {props.temperature}°C. You can go inside.</p>
+                {/*TODO: automate without button - Route to QR Detection*/}
+                <a className="btn btn-primary" href="/QR" role="button"> Checking Process </a><br/><br/>
+            </>
+        )
+    }
 };
 
-function Temperature (props) {
+function Temperature(props) {
     return (
         <div>
-            <h1>
-                { /*TODO : Get temperature from arduino and show it here*/}
-                <Temp temp={props.temp}/>
-            </h1><br/><br/>
+            { /*TODO : Get temperature from arduino and show it here*/}
+            <Temp temperature ={props.temperature}/>
+
         </div>
     );
 }
