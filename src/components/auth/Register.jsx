@@ -5,7 +5,6 @@ import UserContext from "../../context/userContext";
 import ErrorNotice from "../../components/misc/ErrorNotice";
 
 function Register () {
-
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
     const [passwordCheck, setPasswordCheck] = useState();
