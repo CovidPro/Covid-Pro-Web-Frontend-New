@@ -3,17 +3,13 @@ import React from 'react';
 const ViewDataCard = (props) => {
     const staff = props.customer;
     console.log(staff);
+    console.log("Date")
     console.log(props.date)
-    console.log("Hi")
     // today 12.00 am date
     const today = new Date();
-    const todayDate = today.getDate();
-    const todayMonth = today.getMonth();
-    const todayYear = today.getFullYear();
-    const todayHour = today.getHours();
 
 
-    if (staff.positiveDate < props.date) {
+    if (staff.positiveDate > props.date) {
         return (
             <div className="card-container">
                 <img src="https://perlmaven.com/img/mongodb-logo.png" alt=""/>

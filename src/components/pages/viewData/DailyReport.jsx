@@ -34,7 +34,10 @@ class DailyReport extends Component {
             customerList = "there is no customer recored!";
         } else {
             //if (customers.status === "customer") {
-            customerList = customers.map((customer, k) => <ViewDataCard customer={customers[k]} key={k} date={new Date().toISOString()}/>);
+            var begindate = new Date();
+            begindate.setUTCHours(0,0,0,0);
+            begindate = begindate.toISOString();
+            customerList = customers.map((customer, k) => <ViewDataCard customer={customers[k]} key={k} date={begindate}/>);
             //}
         }
 
