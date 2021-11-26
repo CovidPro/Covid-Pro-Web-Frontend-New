@@ -16,6 +16,11 @@ import ScanTemprature from "./components/pages/Check/ScanTemprature";
 import QR from "./components/pages/Check/qr";
 
 import Announcement from "./components/pages/Announcement/announcement";
+import GetUserData from "./components/pages/viewData/GetUserData";
+import CustomerList from "./components/pages/viewData/CustomerList";
+import StaffList from "./components/pages/viewData/StaffList";
+import CovidCases from "./components/pages/viewData/covidcases";
+import DailyReport from "./components/pages/viewData/DailyReport";
 
 
 import ViewData from "./components/pages/viewData/ViewData";
@@ -63,6 +68,11 @@ function App() {
             <Route path="/next" component={ScanTemprature} />
             <Route path="/qr" component={QR} />
             <Route path="/announcement" component={Announcement} />
+            <Route path="/getuserdata" component={GetUserData} />
+            <Route path="/customerlist" component={CustomerList} />
+            <Route path="/stafflist" component={StaffList} />
+            <Route path="/covidcases" component={CovidCases} />
+            <Route path="/dailyreport" component={DailyReport} />
           </Switch>
         </UserContext.Provider>
       </BrowserRouter>
