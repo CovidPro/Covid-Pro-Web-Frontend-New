@@ -1,7 +1,10 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 import CustomerCard from "./CustomerCard";
+import IndexNavbar from "../../Navbars/IndexNavbar";
+import Sidebar from "../../Sidebar/Sidebar";
+import CardTable from "../../Cards/CardTable";
 
 class CustomerList extends Component {
     constructor(props) {
@@ -25,6 +28,7 @@ class CustomerList extends Component {
     }
 
     render() {
+
         const customers = this.state.customers;
         console.log("PrintCustomer: " + customers);
         let customerList;
@@ -33,31 +37,37 @@ class CustomerList extends Component {
             customerList = "there is no customer recored!";
         } else {
             //if (customers.status === "customer") {
-                customerList = customers.map((customer, k) => <CustomerCard customer={customers[k]} key={k}/>);
+            customerList = customers.map((customer, k) => <CustomerCard customer={customers[k]} key={k}/>);
             //}
         }
 
         return (
-            <div className="ShowCustomerList">
-                <div className="container">
-                    <div className="row">
-                        <div className="col-md-12">
-                            <br />
-                            <h2 className="display-4 text-center">Customers List</h2>
-                        </div>
+            <>
+                <IndexNavbar fixed/>
+                <Sidebar/>
+                <div className="relative md:ml-64 bg-blueGray-100">
 
-                        <div className="col-md-11">
-                            <Link to="/create-book" className="btn btn-outline-warning float-right" >
-                                + Add New Customer
-                            </Link>
-                            <br />
-                            <hr />
+                    <div className="ShowCustomerList">
+                        <div className="container">
+                            <div className="row">
+
+
+                                <div className="col-md-11">
+
+                                    <br/>
+                                    <hr/>
+                                </div>
+                            </div>
+                            <CardTable
+                                title="Customer List"
+
+                            />
+                            <div className="list">{customerList}</div>
                         </div>
                     </div>
-
-                    <div className="list">{customerList}</div>
                 </div>
-            </div>
+            </>
+
         );
     }
 }

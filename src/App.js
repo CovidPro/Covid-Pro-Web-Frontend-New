@@ -2,7 +2,6 @@ import React, {useState, useEffect } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import axios from 'axios';
 
-import './App.css';
 
 import Dashboard from './components/pages/Dashboard';
 import Header from './components/layout/Header';
@@ -24,6 +23,25 @@ import DailyReport from "./components/pages/viewData/DailyReport";
 
 
 import ViewData from "./components/pages/viewData/ViewData";
+
+import ReactDOM from "react-dom";
+import { Redirect } from "react-router-dom";
+
+import "@fortawesome/fontawesome-free/css/all.min.css";
+import "assets/styles/tailwind.css";
+
+// layouts
+
+import Admin from "layouts/Admin.js";
+import Auth from "layouts/Auth.js";
+
+// views without layouts
+
+import Landing from "views/Landing.js";
+import Profile from "views/Profile.js";
+import Index from "views/Index.js";
+
+
 
 function App() {
   const [ userData, setUserData] = useState({
@@ -73,6 +91,17 @@ function App() {
             <Route path="/stafflist" component={StaffList} />
             <Route path="/covidcases" component={CovidCases} />
             <Route path="/dailyreport" component={DailyReport} />
+
+
+            {/* add routes with layouts */}
+            <Route path="/admin" component={Admin} />
+            <Route path="/auth" component={Auth} />
+            {/* add routes without layouts */}
+            <Route path="/landing" exact component={Landing} />
+            <Route path="/profile" exact component={Profile} />
+            <Route path="/" exact component={Index} />
+            {/* add redirect for first page */}
+            <Redirect from="*" to="/" />
           </Switch>
         </UserContext.Provider>
       </BrowserRouter>
