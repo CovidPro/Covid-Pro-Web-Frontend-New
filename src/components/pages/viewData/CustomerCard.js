@@ -23,7 +23,8 @@ const CustomerCard = (props) => {
                 </div>
             </div>
         )
-    }else {
+    }
+    else {
         return (
             <div>
                 No Data To Show

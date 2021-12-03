@@ -60,6 +60,7 @@ class CustomerList extends Component {
                             </div>
                             <CardTable
                                 title="Customer List"
+                                customers={customers}
 
                             />
                             <div className="list">{customerList}</div>
