@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import StaffCard from "./StaffCard";
+import CardTable from "../../Cards/CardTable";
+import IndexNavbar from "../../Navbars/IndexNavbar";
+import Sidebar from "../../Sidebar/Sidebar";
 
 class StaffList extends Component {
     constructor(props) {
@@ -38,26 +41,33 @@ class StaffList extends Component {
         }
 
         return (
-            <div className="ShowCustomerList">
-                <div className="container">
-                    <div className="row">
-                        <div className="col-md-12">
-                            <br />
-                            <h2 className="display-4 text-center">Customers List</h2>
-                        </div>
+            <>
+                <IndexNavbar fixed/>
+                <Sidebar/>
+                <div className="relative md:ml-64 bg-blueGray-100">
 
-                        <div className="col-md-11">
-                            <Link to="/create-book" className="btn btn-outline-warning float-right" >
-                                + Add New Customer
-                            </Link>
-                            <br />
-                            <hr />
+                    <div className="ShowCustomerList">
+                        <div className="container">
+                            <div className="row">
+
+
+                                <div className="col-md-11">
+
+                                    <br/>
+                                    <hr/>
+                                </div>
+                            </div>
+                            <CardTable
+                                title="Staff List"
+                                customers={customers}
+                                userStatus="staff"
+                            />
+
                         </div>
                     </div>
-
-                    <div className="list">{customerList}</div>
                 </div>
-            </div>
+            </>
+
         );
     }
 }

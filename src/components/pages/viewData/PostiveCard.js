@@ -46,7 +46,6 @@ const PositiveCard = (props) => {
             });
     }
 
-
     function Reject() {
         // post request to reject the account
         /*fetch('http://localhost:5000/reject', {
@@ -75,6 +74,22 @@ const PositiveCard = (props) => {
             });
     }
 
+    function handleClick() {
+        console.log("Hi")
+        axios
+            .post('http://localhost:5000/customers/msg', {
+                id: staff._id,
+                msg: "Your account has been approved",
+                msg2: "Your account has been rejected"
+            })
+            .then(res => {
+                console.log(res);
+                console.log(res.data);
+            })
+            .catch(err => {
+                console.log(err);
+            });
+    }
 
     //notify
     //0 - not read by owner

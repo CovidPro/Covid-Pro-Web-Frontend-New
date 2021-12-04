@@ -1,20 +1,17 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-// components
+import CardRowPositive from "./CardRowPositive";
 
-import CardRow from "./CardRow";
-
-export default function CardTable({
+export default function CardTablePositive({
      color,
      title,
     customers,
-    userStatus
+    userStatus,
 }) {
 
-  let customersList;
-
-  console.log(customers);
+    console.log(customers);
+    console.log("SDSSDSDSDS");
 
   return (
     <>
@@ -114,7 +111,7 @@ export default function CardTable({
             <tbody>
 
             {
-              customers.map((customer, k) => <CardRow
+              customers.map((customer, k) => <CardRowPositive
                   customerp={customers[k]}
                   key={k}
                   idNum={customers[k].idNumber}
@@ -123,6 +120,7 @@ export default function CardTable({
                   email={customers[k].email}
                   lastDate={customers[k].timestamp}
                   userStatus={userStatus}
+
               />)
             }
 
@@ -136,10 +134,10 @@ export default function CardTable({
   );
 }
 
-CardTable.defaultProps = {
+CardTablePositive.defaultProps = {
   color: "light",
 };
 
-CardTable.propTypes = {
+CardTablePositive.propTypes = {
   color: PropTypes.oneOf(["light", "dark"]),
 };

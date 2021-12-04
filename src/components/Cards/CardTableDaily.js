@@ -4,18 +4,31 @@ import PropTypes from "prop-types";
 // components
 
 import CardRow from "./CardRow";
+import CardRowDaily from "./CardRowDaily";
 
-export default function CardTable({
+export default function CardTableDaily({
      color,
      title,
     customers,
-    userStatus
+    userStatus,
+    startdate
 }) {
 
-  let customersList;
+    let customersList;
 
-  console.log(customers);
+    console.log(customers);
 
+    var enddate = new Date(startdate);
+    enddate.setDate(enddate.getDate() + 1);
+    enddate = enddate.toISOString();
+
+    startdate.setUTCHours(0, 0, 0, 0);
+    startdate = startdate.toISOString();
+
+
+    console.log("SDSSDSDSDS");
+    console.log(startdate);
+    console.log(enddate);
   return (
     <>
       <div
@@ -114,7 +127,7 @@ export default function CardTable({
             <tbody>
 
             {
-              customers.map((customer, k) => <CardRow
+              customers.map((customer, k) => <CardRowDaily
                   customerp={customers[k]}
                   key={k}
                   idNum={customers[k].idNumber}
@@ -123,6 +136,8 @@ export default function CardTable({
                   email={customers[k].email}
                   lastDate={customers[k].timestamp}
                   userStatus={userStatus}
+                  startdate={startdate}
+                  enddate={enddate}
               />)
             }
 
@@ -136,10 +151,10 @@ export default function CardTable({
   );
 }
 
-CardTable.defaultProps = {
+CardTableDaily.defaultProps = {
   color: "light",
 };
 
-CardTable.propTypes = {
+CardTableDaily.propTypes = {
   color: PropTypes.oneOf(["light", "dark"]),
 };

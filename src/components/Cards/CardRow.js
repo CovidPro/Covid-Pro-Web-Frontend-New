@@ -22,11 +22,11 @@ export default function CardRow({
                 {console.log("Customer in table")}
                 {console.log(customerp)}
                 <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center">
-                    <img
+                    {/*<img
                         src={require("assets/img/bootstrap.jpg").default}
                         className="h-12 w-12 bg-white rounded-full border"
                         alt="..."
-                    ></img>
+                    ></img>*/}
                     <span
                         className={
                             "ml-3 font-bold " +

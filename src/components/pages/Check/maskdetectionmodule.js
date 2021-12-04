@@ -1,9 +1,9 @@
 //Dependencies
-import React, {useEffect, useRef} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import * as tf from "@tensorflow/tfjs";
-import * as cocossd from "@tensorflow-models/coco-ssd";
 import Webcam from "react-webcam";
 import {drawRect} from "./drawReact";
+import { nextFrame } from "@tensorflow/tfjs";
 
 function MaskDetection() {
     const webcamRef = useRef(null);
@@ -23,35 +23,144 @@ function MaskDetection() {
             const obj = await net.detect(webcamRef.current.video,1,0.9);
             // TODO: Load Next Page
 
-
             // Draw Rect
             const ctx = canvasRef.current.getContext("2d");
             drawRect(obj, ctx);
         }
     };
 
-    const runCoco = async () => {
-        const net = await cocossd.load();
-        console.log("Model loaded.");
-        setInterval( ()=> detectObj(net),10)
+    const detect_previos = async (net) => {
+        // Check data is available
+        if (
+            typeof webcamRef.current !== "undefined" &&
+            webcamRef.current !== null &&
+            webcamRef.current.video.readyState === 4
+        ) {
+            // Get Video Properties
+            const video = webcamRef.current.video;
+            const videoWidth = webcamRef.current.video.videoWidth;
+            const videoHeight = webcamRef.current.video.videoHeight;
+
+            // Set video width
+            webcamRef.current.video.width = videoWidth;
+            webcamRef.current.video.height = videoHeight;
+
+            // Set canvas height and width
+            canvasRef.current.width = videoWidth;
+            canvasRef.current.height = videoHeight;
+
+            // 4. TODO - Make Detections
+            const img = tf.browser.fromPixels(video)
+            const resized = tf.image.resizeBilinear(img, [640,480])
+            const casted = resized.cast('int32')
+            const expanded = casted.expandDims(0)
+            const obj = await net.executeAsync(expanded)
+
+            console.log("Objects")
+            console.log(obj[5])
+            const boxes = await obj[4].array()
+            const classes = await obj[5].array()
+            const scores = await obj[6].array()
+
+            // Draw mesh
+            const ctx = canvasRef.current.getContext("2d");
+
+            // 5. TODO - Update drawing utility
+             //drawRect(obj, ctx)
+            requestAnimationFrame(()=>{drawRect(boxes[0], classes[0], scores[0], 0.9, videoWidth, videoHeight, ctx)});
+
+            tf.dispose(img)
+            tf.dispose(resized)
+            tf.dispose(casted)
+            tf.dispose(expanded)
+            tf.dispose(obj)
+
+        }
     };
 
-    useEffect(()=>{ runCoco() },[]);
+
+    //https://facemaskcovidpro.s3.jp-tok.cloud-object-storage.appdomain.cloud/model.json
+
+    // ibmcloud cos bucket-cors-put --bucket facemaskcovidpro --cors-configuration file://corsconfig.json
+
+    const runCoco = async () => {
+        // 3. TODO - Load network
+        console.log("Loading Model...")
+        const net = await tf.loadGraphModel('https://facemaskcovidpro.s3.jp-tok.cloud-object-storage.appdomain.cloud/model.json')
+        console.log("Model Loaded")
+        // Loop and detect hands
+        setInterval(() => {
+            detect(net);
+        }, 16.7);
+    };
+
+    const detect = async (net) => {
+        // Check data is available
+        if (
+            typeof webcamRef.current !== "undefined" &&
+            webcamRef.current !== null &&
+            webcamRef.current.video.readyState === 4
+        ) {
+            // Get Video Properties
+            const video = webcamRef.current.video;
+            const videoWidth = webcamRef.current.video.videoWidth;
+            const videoHeight = webcamRef.current.video.videoHeight;
+
+            // Set video width
+            webcamRef.current.video.width = videoWidth;
+            webcamRef.current.video.height = videoHeight;
+
+            // Set canvas height and width
+            canvasRef.current.width = videoWidth;
+            canvasRef.current.height = videoHeight;
+
+            // 4. TODO - Make Detections
+            const img = tf.browser.fromPixels(video)
+            const resized = tf.image.resizeBilinear(img, [640,480])
+            const casted = resized.cast('int32')
+            const expanded = casted.expandDims(0)
+            const obj = await net.executeAsync(expanded)
+
+            console.log("Objects")
+            console.log(obj[4])
+            const boxes = await obj[4].array()
+            const classes = await obj[5].array()
+            const scores = await obj[6].array()
+
+            // Draw mesh
+            const ctx = canvasRef.current.getContext("2d");
+
+            // 5. TODO - Update drawing utility
+            // drawSomething(obj, ctx)
+            requestAnimationFrame(()=>{drawRect(boxes[0], classes[0], scores[0], 0.9, videoWidth, videoHeight, ctx)});
+
+            tf.dispose(img)
+            tf.dispose(resized)
+            tf.dispose(casted)
+            tf.dispose(expanded)
+            tf.dispose(obj)
+
+        }
+    };
+
+    useEffect(()=>{runCoco()},[]);
 
     return (
         <div className="App">
             <header className="App-header">
-                Model is Loading please wait...
                 <Webcam
                     ref={webcamRef}
                     muted={true}
                     style={{
-
+                        position: "absolute",
                         marginLeft: "auto",
                         marginRight: "auto",
+                        left: 0,
+                        right: 0,
                         textAlign: "center",
-                        width: "auto",
-                        height:"auto",
+                        zindex: 9,
+                        width: 640,
+                        height: 480,
                     }}
                 />
 
@@ -61,12 +170,16 @@ function MaskDetection() {
                         position: "absolute",
                         marginLeft: "auto",
                         marginRight: "auto",
-                        textAlign: "center"
+                        left: 0,
+                        right: 0,
+                        textAlign: "center",
+                        zindex: 8,
+                        width: 640,
+                        height: 480,
                     }}
                 />
             </header>
         </div>
     );
 }
-
 export default MaskDetection;
