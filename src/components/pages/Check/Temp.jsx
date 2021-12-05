@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from "react-router-dom";
 
 
 const Temp = (props) => {
@@ -27,10 +28,13 @@ const Temp = (props) => {
             );
         }
 
+            <Link to="/next"/>
+
         return (
             <>
                 <p className="temp-text">Temp is {props.temperature}°C. You can go inside.</p>
                 {/*TODO: automate without button - Route to QR Detection*/}
+
                 <a className="btn btn-primary" href="/QR" role="button"> Checking Process </a><br/><br/>
             </>
         )
