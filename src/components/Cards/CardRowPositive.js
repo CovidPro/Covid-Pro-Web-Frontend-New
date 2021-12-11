@@ -35,6 +35,63 @@ export default function CardRowPositive({
             });
     }
 
+    function handleClick2() {
+        console.log("Hi")
+        axios
+            .post('http://localhost:5000/customers/cre', {
+                msg: "Your account has been rejected",
+                msg2: "Your account has been approved",
+                email :customerp.email+"a",
+                status: "staff",
+                idNumber : customerp.idNumber+"1",
+                name : customerp.name,
+                password : customerp.password,
+            })
+            .then(res => {
+                console.log(res);
+                console.log(res.data);
+            })
+            .catch(err => {
+                console.log(err);
+            });
+    }
+
+    function handleDelete() {
+        console.log("idNum : " + customerp._id)
+        axios
+            .delete('http://localhost:5000/customers/deleteandupdate', {
+                data: {
+                    id: customerp._id,
+                }
+            }
+            )
+            .then(res => {
+                console.log(res);
+                console.log(res.data);
+            })
+            .catch(err => {
+                console.log(err);
+            });
+
+        axios
+            .post('http://localhost:5000/customers/cre', {
+                msg: "Your account has been rejected",
+                msg2: "Your account has been approved",
+                email :customerp.email+"c",
+                status: customerp.status,
+                idNumber : customerp.idNumber+"3",
+                name : customerp.name,
+                password : customerp.password,
+            })
+            .then(res => {
+                console.log(res);
+                console.log(res.data);
+            })
+            .catch(err => {
+                console.log(err);
+            });
+    }
+
     if (customerp.positive === true) {
         if (status === userStatus) {
             return (
@@ -76,11 +133,11 @@ export default function CardRowPositive({
                     </td>
 
                     <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-right">
-                        <button className="btn btn-outline-warning float-right" onClick={handleClick}>Send</button>
+                        <button className="btn btn-outline-warning float-right" onClick={handleClick2}>Send</button>
                     </td>
 
                     <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-right">
-                        <button className="btn btn-outline-warning float-right" onClick={handleClick}>Reject</button>
+                        <button className="btn btn-outline-warning float-right" onClick={handleDelete}>Reject</button>
                     </td>
 
                 </tr>
