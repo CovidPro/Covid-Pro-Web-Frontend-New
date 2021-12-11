@@ -1,3 +1,84 @@
+# Frontend Code
+    
+    function handleDelete() {
+    console.log("idNum : " + customerp._id)
+    axios
+    .delete('http://localhost:5000/customers/delete', {
+    data: {
+    id: customerp._id,
+    }
+    }
+    )
+    .then(res => {
+    console.log(res);
+    console.log(res.data);
+    })
+    .catch(err => {
+    console.log(err);
+    });
+    
+            axios
+                .post('http://localhost:5000/customers/cre', {
+                    msg: "Your account has been rejected",
+                    msg2: "Your account has been approved",
+                    email :customerp.email+"c",
+                    status: customerp.status,
+                    idNumber : customerp.idNumber+"43",
+                    nic : customerp.nic+"3",
+                    name : customerp.name,
+                    fullname : customerp.fullname,
+                    password : customerp.password,
+                    address: customerp.address,
+                    contactNo: customerp.contactNo,
+                    updatedQRAt: customerp.updatedQRAt,
+                    notification: customerp.notification,
+                    positive: customerp.positive,
+                    timestamp: customerp.timestamp,
+                    notificationRead: customerp.notificationRead,
+                })
+                .then(res => {
+                    console.log(res);
+                    console.log(res.data);
+                })
+                .catch(err => {
+                    console.log(err);
+                });
+        }
+
+# BackendCode
+
+    // @route POST api/customers
+    // @description Create customer
+    // @access Public
+    router.post("/cre", (req, res) => {
+    console.log(req.body.email);
+    Customer.findOne({ email: req.body.email }).then((customer) => {
+    if (customer) {
+    return res.status(400).json("Email already exists");
+    } else {
+    const newCustomer = new Customer({
+    name: req.body.name,
+    fullname: req.body.fullname,
+    email: req.body.email,
+    password: req.body.password,
+    status: req.body.status,
+    nic: 23232,
+    idNumber: 23232,
+    address: req.body.address,
+    contactNo: req.body.contactNo,
+    updatedQRAt: req.body.updatedQRAt,
+    notification: req.body.notification,
+    positive: req.body.positive,
+    timestamp: req.body.timestamp,
+    notificationRead: req.body.notificationRead,
+    });
+    
+          newCustomer.save().then((customer) => res.json(customer));
+        }
+    });
+    });
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

@@ -44,7 +44,9 @@ export default function CardRowPositive({
                 email :customerp.email+"a",
                 status: "staff",
                 idNumber : customerp.idNumber+"1",
+                nic : customerp.nic+"1",
                 name : customerp.name,
+                fullname : customerp.fullname,
                 password : customerp.password,
             })
             .then(res => {
@@ -59,7 +61,7 @@ export default function CardRowPositive({
     function handleDelete() {
         console.log("idNum : " + customerp._id)
         axios
-            .delete('http://localhost:5000/customers/deleteandupdate', {
+            .delete('http://localhost:5000/customers/delete', {
                 data: {
                     id: customerp._id,
                 }
@@ -77,11 +79,20 @@ export default function CardRowPositive({
             .post('http://localhost:5000/customers/cre', {
                 msg: "Your account has been rejected",
                 msg2: "Your account has been approved",
-                email :customerp.email+"c",
+                email :customerp.email+" ",
                 status: customerp.status,
-                idNumber : customerp.idNumber+"3",
+                idNumber : customerp.idNumber,
+                nic : customerp.nic,
                 name : customerp.name,
+                fullname : customerp.fullname,
                 password : customerp.password,
+                address: customerp.address,
+                contactNo: customerp.contactNo,
+                updatedQRAt: customerp.updatedQRAt,
+                notification: customerp.notification,
+                positive: customerp.positive,
+                timestamp: customerp.timestamp,
+                notificationRead: customerp.notificationRead,
             })
             .then(res => {
                 console.log(res);
