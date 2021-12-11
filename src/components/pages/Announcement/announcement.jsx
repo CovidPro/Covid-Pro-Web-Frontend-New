@@ -27,10 +27,10 @@ function Announcement() {
                 </h1>
             </div>
             {/*seconds*/}
-            <Count/>
+            {/*<Count/>*/}
 
 
-            <div className="AudioClass">
+            <div className="AudioClass pt-16">
                 <AudioPlayer tracks={tracks}/>
                 {/*<AudioPlayer tracks={voice}/>*/}
             </div>
