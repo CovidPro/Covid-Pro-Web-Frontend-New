@@ -72,7 +72,7 @@ class DailyReport extends Component {
                 <Sidebar/>
                 <div className="relative md:ml-64 bg-blueGray-100">
 
-                    <div className="ShowCustomerList">
+                    <div className="ShowCustomerList mt-20">
                         <div className="container">
                             <div className="row">
 
@@ -99,9 +99,16 @@ class DailyReport extends Component {
                             </form>
 
                             <CardTableDaily
-                                title="Daily Report"
+                                title="Daily Report for Staff"
                                 customers={customers}
                                 userStatus="staff"
+                                startdate={this.state.startDate}
+                            />
+
+                            <CardTableDaily
+                                title="Daily Report for Customer"
+                                customers={customers}
+                                userStatus="customer"
                                 startdate={this.state.startDate}
                             />
 

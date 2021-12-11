@@ -47,7 +47,7 @@ class CovidCases extends Component {
                 <Sidebar/>
                 <div className="relative md:ml-64 bg-blueGray-100">
 
-                    <div className="ShowCustomerList">
+                    <div className="ShowCustomerList mt-20">
                         <div className="container">
                             <div className="row">
 
@@ -61,9 +61,15 @@ class CovidCases extends Component {
 
 
                             <CardTablePositive
-                                title="Positive Cases"
+                                title="Positive Cases Staff"
                                 customers={customers}
                                 userStatus="staff"
+                            />
+
+                            <CardTablePositive
+                                title="Positive Cases Customer"
+                                customers={customers}
+                                userStatus="customer"
                             />
 
                         </div>

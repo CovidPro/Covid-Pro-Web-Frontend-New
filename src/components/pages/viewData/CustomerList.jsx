@@ -47,7 +47,7 @@ class CustomerList extends Component {
                 <Sidebar/>
                 <div className="relative md:ml-64 bg-blueGray-100">
 
-                    <div className="ShowCustomerList">
+                    <div className="ShowCustomerList mt-20">
                         <div className="container">
                             <div className="row">
 

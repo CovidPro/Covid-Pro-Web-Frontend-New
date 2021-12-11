@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { useHistory } from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
 import UserContext from "../../context/userContext";
 
 function AuthOptions () {
@@ -19,7 +19,30 @@ function AuthOptions () {
     return (
         <nav className="auth-options">
             {userData.user ? (
-                <button className="btn btn-primary mr-2" onClick={logout}>Logout</button>
+<div>
+                <button onClick={logout}
+                        className={
+                            "text-xs uppercase py-3 font-bold block items-center" +
+                            (window.location.href.indexOf("/customerlist") !== -1
+                                ? "text-lightBlue-500 hover:text-lightBlue-600"
+                                : "text-blueGray-700 hover:text-blueGray-500")
+                        }
+                >
+
+                    <i
+                        className={
+                            "fas fa-map-marked mr-2 text-sm " +
+                            (window.location.href.indexOf("/dailyreport") !== -1
+                                ? "opacity-75"
+                                : "text-blueGray-300")
+                        }
+                    ></i>{" "}
+                    Logout
+
+                </button>
+</div>
+
+
             ) : (
                 <>
                 <button className="btn btn-primary mr-2" onClick={register}>Sign Up</button>

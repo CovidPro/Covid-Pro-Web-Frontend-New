@@ -13,6 +13,7 @@ export default function CardRow({
     phoneNumber,
     email,
     lastDate,
+    address,
     userStatus
 }) {
     if (customerp.status === userStatus) {
@@ -54,8 +55,8 @@ export default function CardRow({
                     {lastDate}
                 </td>
 
-                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-right">
-                    <TableDropdown/>
+                <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                    {address}
                 </td>
 
             </tr>

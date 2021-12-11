@@ -135,6 +135,7 @@ export default function CardTableDaily({
                   phoneNumber={customers[k].phoneNumber}
                   email={customers[k].email}
                   lastDate={customers[k].timestamp}
+                  status={customers[k].status}
                   userStatus={userStatus}
                   startdate={startdate}
                   enddate={enddate}

@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import AudioControls from "./AudioControls";
 import Backdrop from "./Backdrop";
 import "./styles.css";
+import Wave from "react-wavify";
 
 const AudioPlayer = ({ tracks }) => {
     // State
@@ -107,6 +108,7 @@ const AudioPlayer = ({ tracks }) => {
 
     return (
         <div className="audio-player">
+            <div className="">
             <div className="track-info">
                 <img
                     className="artwork"
@@ -134,11 +136,11 @@ const AudioPlayer = ({ tracks }) => {
                     style={{ background: trackStyling }}
                 />
             </div>
-            <Backdrop
-                trackIndex={trackIndex}
-                activeColor={color}
-                isPlaying={isPlaying}
-            />
+
+
+
+
+            </div>
         </div>
     );
 };

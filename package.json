@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@emotion/react": "^11.7.0",
+    "@emotion/styled": "^11.6.0",
     "@fortawesome/fontawesome-free": "5.15.3",
     "@popperjs/core": "2.9.1",
     "@tailwindcss/forms": "0.2.1",
@@ -31,6 +33,7 @@
     "react-step-progress": "^1.0.3",
     "react-step-progress-bar": "^1.0.3",
     "react-timer-hook": "^3.0.5",
+    "react-wavify": "^1.5.4",
     "react-webcam": "^6.0.0",
     "tailwindcss": "2.0.4",
     "web-vitals": "^1.0.1"

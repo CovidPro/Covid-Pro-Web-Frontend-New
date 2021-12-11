@@ -44,7 +44,7 @@ class StaffList extends Component {
             <>
                 <IndexNavbar fixed/>
                 <Sidebar/>
-                <div className="relative md:ml-64 bg-blueGray-100">
+                <div className="relative md:ml-64 bg-blueGray-100 mt-20">
 
                     <div className="ShowCustomerList">
                         <div className="container">

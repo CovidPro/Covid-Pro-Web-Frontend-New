@@ -14,6 +14,7 @@ export default function CardRowPositive({
     phoneNumber,
     email,
     lastDate,
+    status,
     userStatus
 }) {
 
@@ -34,8 +35,8 @@ export default function CardRowPositive({
             });
     }
 
-    if (customerp.positive === false) {
-        if (customerp.status === "customer") {
+    if (customerp.positive === true) {
+        if (status === userStatus) {
             return (
 
                 <tr>

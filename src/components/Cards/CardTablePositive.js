@@ -104,6 +104,7 @@ export default function CardTablePositive({
                       : "bg-lightBlue-800 text-lightBlue-300 border-lightBlue-700")
                   }
                 >
+                    Actions
                 </th>
               </tr>
             </thead>
@@ -119,6 +120,7 @@ export default function CardTablePositive({
                   phoneNumber={customers[k].phoneNumber}
                   email={customers[k].email}
                   lastDate={customers[k].timestamp}
+                  status={customers[k].status}
                   userStatus={userStatus}
 
               />)

@@ -107,6 +107,7 @@ export default function CardTable({
                       : "bg-lightBlue-800 text-lightBlue-300 border-lightBlue-700")
                   }
                 >
+                    Address
                 </th>
               </tr>
             </thead>
@@ -122,6 +123,7 @@ export default function CardTable({
                   phoneNumber={customers[k].phoneNumber}
                   email={customers[k].email}
                   lastDate={customers[k].timestamp}
+                  address={customers[k].address}
                   userStatus={userStatus}
               />)
             }
