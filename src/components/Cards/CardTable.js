@@ -118,9 +118,9 @@ export default function CardTable({
               customers.map((customer, k) => <CardRow
                   customerp={customers[k]}
                   key={k}
-                  idNum={customers[k].idNumber}
-                  name={customers[k].name}
-                  phoneNumber={customers[k].phoneNumber}
+                  idNum={customers[k].nic || customers[k].idNumber}
+                  name={customers[k].fullname || customers[k].name}
+                  phoneNumber={customers[k].contactNo || customers[k].phoneNumber}
                   email={customers[k].email}
                   lastDate={customers[k].timestamp}
                   address={customers[k].address}

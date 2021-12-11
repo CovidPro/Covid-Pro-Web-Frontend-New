@@ -130,9 +130,9 @@ export default function CardTableDaily({
               customers.map((customer, k) => <CardRowDaily
                   customerp={customers[k]}
                   key={k}
-                  idNum={customers[k].idNumber}
-                  name={customers[k].name}
-                  phoneNumber={customers[k].phoneNumber}
+                  idNum={customers[k].idNumber || customers[k].nic}
+                  name={customers[k].name || customers[k].fullname}
+                  phoneNumber={customers[k].phoneNumber || customers[k].contactNo}
                   email={customers[k].email}
                   lastDate={customers[k].timestamp}
                   status={customers[k].status}
