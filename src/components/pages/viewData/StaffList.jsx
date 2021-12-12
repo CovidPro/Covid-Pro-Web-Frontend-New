@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
 import axios from "axios";
 import CardTable from "../../Cards/CardTable";
 import IndexNavbar from "../../Navbars/IndexNavbar";

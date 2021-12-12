@@ -1,6 +1,6 @@
 import AudioPlayer from "./Audioplayer/AudioPlayer";
 import tracks from "./Audioplayer/tracks";
-import React, {useEffect} from "react";
+import React from "react";
 import Wave from "react-wavify";
 
 
@@ -25,7 +25,7 @@ function Announcement() {
                         paused={false}
                         options={{
                             height: 20,
-                        opacity:1,
+                            opacity: 1,
                             amplitude: 10,
                             speed: 0.2,
                             points: 3,
@@ -33,11 +33,13 @@ function Announcement() {
                         <defs>
                             <linearGradient id="gradient" gradientTransform="rotate(45)">
                                 <stop stopColor="#7A5FFF">
-                                    <animate attributeName="stop-color" values="#7A5FFF; #01FF89; #7A5FFF" dur="4s" repeatCount="indefinite"/>
+                                    <animate attributeName="stop-color" values="#7A5FFF; #01FF89; #7A5FFF" dur="4s"
+                                             repeatCount="indefinite"/>
                                 </stop>
 
                                 <stop stopColor="#01FF89">
-                                    <animate attributeName="stop-color" values="#01FF89; #7A5FFF; #01FF89" dur="4s" repeatCount="indefinite"/>
+                                    <animate attributeName="stop-color" values="#01FF89; #7A5FFF; #01FF89" dur="4s"
+                                             repeatCount="indefinite"/>
                                 </stop>
 
                             </linearGradient>

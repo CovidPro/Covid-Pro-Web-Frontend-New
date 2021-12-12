@@ -1,9 +1,8 @@
 //Dependencies
-import React, {useEffect, useRef, useState} from "react";
+import React, {useEffect, useRef} from "react";
 import * as tf from "@tensorflow/tfjs";
 import Webcam from "react-webcam";
 import {drawRect} from "./drawReact";
-import { nextFrame } from "@tensorflow/tfjs";
 import {Link} from "react-router-dom";
 import Timeline from "../../timeline/timeline";
 
@@ -48,7 +47,7 @@ function MaskDetection() {
 
             // 4. TODO - Make Detections
             const img = tf.browser.fromPixels(video)
-            const resized = tf.image.resizeBilinear(img, [640,480])
+            const resized = tf.image.resizeBilinear(img, [640, 480])
             const casted = resized.cast('int32')
             const expanded = casted.expandDims(0)
             const obj = await net.executeAsync(expanded)
@@ -63,7 +62,9 @@ function MaskDetection() {
             const ctx = canvasRef.current.getContext("2d");
 
             // drawSomething(obj, ctx)
-            requestAnimationFrame(()=>{drawRect(boxes[0], classes[0], scores[0], 0.9, videoWidth, videoHeight, ctx)});
+            requestAnimationFrame(() => {
+                drawRect(boxes[0], classes[0], scores[0], 0.9, videoWidth, videoHeight, ctx)
+            });
 
             tf.dispose(img)
             tf.dispose(resized)
@@ -78,7 +79,9 @@ function MaskDetection() {
         }
     };
 
-    useEffect(()=>{runCoco()},[]);
+    useEffect(() => {
+        runCoco()
+    }, []);
 
     return (
         <div className="App">
@@ -126,4 +129,5 @@ function MaskDetection() {
         </div>
     );
 }
+
 export default MaskDetection;

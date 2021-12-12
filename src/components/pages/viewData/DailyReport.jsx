@@ -1,4 +1,4 @@
-import React, {Component, useState} from "react";
+import React, {Component} from "react";
 import axios from "axios";
 import DatePicker from "react-datepicker";
 
@@ -33,7 +33,7 @@ class DailyReport extends Component {
             });
     }
 
-    handleChange(date,e) {
+    handleChange(date, e) {
         this.setState({
             startDate: date
         })
@@ -70,11 +70,11 @@ class DailyReport extends Component {
 
                             <div inline-datepicker data-date="02/25/2022"></div>
 
-                            <form onSubmit={ this.onFormSubmit }>
+                            <form onSubmit={this.onFormSubmit}>
                                 <div className="form-group">
                                     <DatePicker
-                                        selected={ this.state.startDate }
-                                        onChange={ this.handleChange }
+                                        selected={this.state.startDate}
+                                        onChange={this.handleChange}
                                         name="startDate"
                                         dateFormat="MM/dd/yyyy"
                                     />

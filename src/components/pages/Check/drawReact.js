@@ -1,15 +1,15 @@
 // Define our labelmap
 const labelMap = {
-    1:{name:'Mask', color:'green'},
-    2:{name:'NoMask', color:'red'},
+    1: {name: 'Mask', color: 'green'},
+    2: {name: 'NoMask', color: 'red'},
 }
 
 // Define a drawing function
-export const drawRect = (boxes, classes, scores, threshold, imgWidth, imgHeight, ctx)=>{
-    for(let i=0; i<=boxes.length; i++){
-        if(boxes[i] && classes[i] && scores[i]>threshold){
+export const drawRect = (boxes, classes, scores, threshold, imgWidth, imgHeight, ctx) => {
+    for (let i = 0; i <= boxes.length; i++) {
+        if (boxes[i] && classes[i] && scores[i] > threshold) {
             // Extract variables
-            const [y,x,height,width] = boxes[i]
+            const [y, x, height, width] = boxes[i]
             const text = classes[i]
 
             // Set styling
@@ -20,8 +20,8 @@ export const drawRect = (boxes, classes, scores, threshold, imgWidth, imgHeight,
 
             // DRAW!!
             ctx.beginPath()
-            ctx.fillText(labelMap[text]['name'], x*imgWidth, y*imgHeight-10)
-            ctx.rect(x*imgWidth, y*imgHeight, width*imgWidth/2, height*imgHeight/2);
+            ctx.fillText(labelMap[text]['name'], x * imgWidth, y * imgHeight - 10)
+            ctx.rect(x * imgWidth, y * imgHeight, width * imgWidth / 2, height * imgHeight / 2);
             ctx.stroke()
         }
     }

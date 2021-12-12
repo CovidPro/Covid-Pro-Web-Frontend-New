@@ -15,6 +15,7 @@ export default function Timeline(props) {
     function step3Validator() {
         // return a boolean
     }
+
     return (
         <div className="App">
             <StepProgressBar

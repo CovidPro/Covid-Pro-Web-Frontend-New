@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
 import axios from "axios";
 import IndexNavbar from "../../Navbars/IndexNavbar";
 import Sidebar from "../../Sidebar/Sidebar";

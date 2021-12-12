@@ -1,7 +1,5 @@
 import React, {useEffect} from "react";
 
-import Wave from 'react-wavify';
-
 
 const Backdrop = ({activeColor, trackIndex, isPlaying}) => {
     useEffect(() => {

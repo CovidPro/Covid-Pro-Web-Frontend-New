@@ -1,5 +1,5 @@
-import React, {useState, useEffect } from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import React, {useEffect, useState} from 'react';
+import {BrowserRouter, Redirect, Route, Switch} from 'react-router-dom';
 import axios from 'axios';
 
 import Dashboard from './components/pages/Dashboard';
@@ -19,8 +19,6 @@ import DailyReport from "./components/pages/viewData/DailyReport";
 
 import ViewData from "./components/pages/viewData/ViewData";
 
-import { Redirect } from "react-router-dom";
-
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "assets/styles/tailwind.css";
 
@@ -29,68 +27,68 @@ import Index from "views/Index.js";
 
 
 function App() {
-  const [ userData, setUserData] = useState({
-    token: undefined,
-    user: undefined
-  });
+    const [userData, setUserData] = useState({
+        token: undefined,
+        user: undefined
+    });
 
-  useEffect(() => {
-    const checkLoggedIn = async () => {
-      let token = localStorage.getItem("auth-token");
-      if(token === null){
-        localStorage.setItem("auth-token", "");
-        token = "";
-      }
-      const tokenResponse = await axios.post('http://localhost:5000/users/tokenIsValid', null, {headers: {"x-auth-token": token}});
-      if (tokenResponse.data) {
-        const userRes = await axios.get("http://localhost:5000/users/", {
-          headers: { "x-auth-token": token },
-        });
-        setUserData({
-          token,
-          user: userRes.data,
-        });
-      }
-    }
+    useEffect(() => {
+        const checkLoggedIn = async () => {
+            let token = localStorage.getItem("auth-token");
+            if (token === null) {
+                localStorage.setItem("auth-token", "");
+                token = "";
+            }
+            const tokenResponse = await axios.post('http://localhost:5000/users/tokenIsValid', null, {headers: {"x-auth-token": token}});
+            if (tokenResponse.data) {
+                const userRes = await axios.get("http://localhost:5000/users/", {
+                    headers: {"x-auth-token": token},
+                });
+                setUserData({
+                    token,
+                    user: userRes.data,
+                });
+            }
+        }
 
-    checkLoggedIn();
-  }, []);
+        checkLoggedIn();
+    }, []);
 
-  return (
-      <BrowserRouter>
-        <UserContext.Provider value={{ userData, setUserData }}>
-          {/*<Header />*/}
-          <br/>
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route path="/dashboard" component={Dashboard} />
+    return (
+        <BrowserRouter>
+            <UserContext.Provider value={{userData, setUserData}}>
+                {/*<Header />*/}
+                <br/>
+                <Switch>
+                    <Route exact path="/" component={Home}/>
+                    <Route path="/dashboard" component={Dashboard}/>
 
-            <Route path="/register" component={Register} />
-            <Route path="/login" component={Login} />
+                    <Route path="/register" component={Register}/>
+                    <Route path="/login" component={Login}/>
 
-            <Route path="/viewdata" component={ViewData} />
+                    <Route path="/viewdata" component={ViewData}/>
 
-            <Route path="/facemask" component={ScanFaceMask} />
-            <Route path="/qr" component={QR} />
+                    <Route path="/facemask" component={ScanFaceMask}/>
+                    <Route path="/qr" component={QR}/>
 
-            <Route path="/announcement" component={Announcement} />
+                    <Route path="/announcement" component={Announcement}/>
 
-            <Route path="/customerlist" component={CustomerList} />
-            <Route path="/stafflist" component={StaffList} />
-            <Route path="/covidcases" component={CovidCases} />
-            <Route path="/dailyreport" component={DailyReport} />
+                    <Route path="/customerlist" component={CustomerList}/>
+                    <Route path="/stafflist" component={StaffList}/>
+                    <Route path="/covidcases" component={CovidCases}/>
+                    <Route path="/dailyreport" component={DailyReport}/>
 
 
-            <Route path="/landing" exact component={Landing} />
+                    <Route path="/landing" exact component={Landing}/>
 
-            <Route path="/index" exact component={Index} />
+                    <Route path="/index" exact component={Index}/>
 
-            <Redirect from="*" to="/" />
+                    <Redirect from="*" to="/"/>
 
-          </Switch>
-        </UserContext.Provider>
-      </BrowserRouter>
-  );
+                </Switch>
+            </UserContext.Provider>
+        </BrowserRouter>
+    );
 }
 
 export default App;

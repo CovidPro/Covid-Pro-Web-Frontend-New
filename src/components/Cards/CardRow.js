@@ -1,16 +1,16 @@
 import React from "react";
 
 export default function CardRow({
-     color,
-    customerp,
-    idNum,
-    name,
-    phoneNumber,
-    email,
-    lastDate,
-    address,
-    userStatus
-}) {
+                                    color,
+                                    customerp,
+                                    idNum,
+                                    name,
+                                    phoneNumber,
+                                    email,
+                                    lastDate,
+                                    address,
+                                    userStatus
+                                }) {
     if (customerp.status === userStatus) {
         return (
 
@@ -51,8 +51,7 @@ export default function CardRow({
             </tr>
 
         )
-    }
-    else {
+    } else {
         return (
             <></>
         )
