@@ -1,13 +1,7 @@
 import React from "react";
-
-// components
-
 import CardButtons from "components/Cards/CardButtons.js";
-import axios from "axios";
-import ViewDataCard from "../pages/viewData/ViewDataCard";
 
 export default class MainButton extends React.Component {
-
 
     render() {
 

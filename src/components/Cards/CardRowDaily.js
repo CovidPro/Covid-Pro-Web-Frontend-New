@@ -1,23 +1,20 @@
 import React from "react";
-import PropTypes from "prop-types";
-
-// components
 
 import TableDropdown from "components/Dropdowns/TableDropdown.js";
 
 export default function CardRowDaily({
-                                    color,
-                                    customerp,
-                                    idNum,
-                                    name,
-                                    phoneNumber,
-                                    email,
-                                    lastDate,
-                                    userStatus,
-    startdate,
-    enddate,
-    status
-                                }) {
+                                         color,
+                                         customerp,
+                                         idNum,
+                                         name,
+                                         phoneNumber,
+                                         email,
+                                         lastDate,
+                                         userStatus,
+                                         startdate,
+                                         enddate,
+                                         status
+                                     }) {
 
 
     console.log(startdate);
@@ -28,14 +25,7 @@ export default function CardRowDaily({
             return (
 
                 <tr>
-                    {console.log("Customer in table")}
-                    {console.log(customerp)}
                     <th className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center">
-                        {/*<img
-                        src={require("assets/img/bootstrap.jpg").default}
-                        className="h-12 w-12 bg-white rounded-full border"
-                        alt="..."
-                    ></img>*/}
                         <span
                             className={
                                 "ml-3 font-bold " +
@@ -70,8 +60,7 @@ export default function CardRowDaily({
                 </tr>
 
             )
-        }
-        else {
+        } else {
             return (
                 <></>
             )

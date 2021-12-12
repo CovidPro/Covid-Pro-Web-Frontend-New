@@ -1,27 +1,27 @@
-import React, { useState, useContext } from 'react';
-import { useHistory } from "react-router-dom";
+import React, {useState, useContext} from 'react';
+import {useHistory} from "react-router-dom";
 import axios from "axios";
 import UserContext from "../../context/userContext";
 import ErrorNotice from "../../components/misc/ErrorNotice";
 import IndexNavbar from "../Navbars/IndexNavbar";
 
-function Register () {
+function Register() {
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
     const [passwordCheck, setPasswordCheck] = useState();
     const [shopName, setShopName] = useState();
     const [shopOwner, setShopOwner] = useState();
     const [shopAddress, setShopAddress] = useState();
-    const [contactNumber, setContactNumber] = useState();;
+    const [contactNumber, setContactNumber] = useState();
     const [error, setError] = useState();
 
-    const { setUserData } = useContext(UserContext);
+    const {setUserData} = useContext(UserContext);
     const history = useHistory();
 
     const submit = async (e) => {
         e.preventDefault();
 
-        try{
+        try {
             const newUser = {email, password, passwordCheck, shopName, shopOwner, shopAddress, contactNumber};
             await axios.post("http://localhost:5000/users/register", newUser);
             const loginResponse = await axios.post("http://localhost:5000/users/login", {
@@ -33,7 +33,7 @@ function Register () {
             });
             localStorage.setItem("auth-token", loginResponse.data.token);
             history.push("/");
-        } catch(err) {
+        } catch (err) {
             err.response.data.msg && setError(err.response.data.msg)
         }
 
@@ -48,7 +48,7 @@ function Register () {
             <br/>
             <br/>
             <section className="header relative pt-0 items-center flex h-screen max-h-860-px">
-            {error && <ErrorNotice message={error} clearError={() => setError(undefined)} />}<br/>
+                {error && <ErrorNotice message={error} clearError={() => setError(undefined)}/>}<br/>
                 <div className="absolute top-0 w-full h-full bg-blueGray-800 bg-no-repeat bg-full"/>
                 <div className="container mx-auto px-4 h-full">
 
@@ -72,8 +72,6 @@ function Register () {
 
                                         <div className="mt-10">
                                             <form onSubmit={submit}>
-
-
 
 
                                                 <div className="relative w-full mb-3">
@@ -108,7 +106,8 @@ function Register () {
                                                     >
                                                         Confirm Password:
                                                     </label>
-                                                    <input type="password" id="Confirm password" placeholder="Confirm Password"
+                                                    <input type="password" id="Confirm password"
+                                                           placeholder="Confirm Password"
                                                            className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                                                            onChange={e => setPasswordCheck(e.target.value)}/>
                                                 </div>
@@ -183,7 +182,7 @@ function Register () {
                 </div>
             </section>
         </div>
-        );
+    );
 }
 
 export default Register;

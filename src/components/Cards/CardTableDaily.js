@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 
 // components
 
-import CardRow from "./CardRow";
 import CardRowDaily from "./CardRowDaily";
 
 export default function CardTableDaily({

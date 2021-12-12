@@ -62,7 +62,6 @@ function MaskDetection() {
             // Draw mesh
             const ctx = canvasRef.current.getContext("2d");
 
-            // 5. TODO - Update drawing utility
             // drawSomething(obj, ctx)
             requestAnimationFrame(()=>{drawRect(boxes[0], classes[0], scores[0], 0.9, videoWidth, videoHeight, ctx)});
 

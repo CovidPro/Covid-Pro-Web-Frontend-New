@@ -1,10 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
-import PositiveCard from "./PostiveCard";
 import IndexNavbar from "../../Navbars/IndexNavbar";
 import Sidebar from "../../Sidebar/Sidebar";
-import DatePicker from "react-datepicker";
 import CardTablePositive from "../../Cards/CardTablePositive";
 
 class CovidCases extends Component {
@@ -30,16 +27,7 @@ class CovidCases extends Component {
 
     render() {
         const customers = this.state.customers;
-        console.log("PrintCustomer: " + customers);
-        let customerList;
-
-        if (!customers) {
-            customerList = "there is no customer recored!";
-        } else {
-            //if (customers.status === "customer") {
-            customerList = customers.map((customer, k) => <PositiveCard customer={customers[k]} key={k}/>);
-            //}
-        }
+        //console.log("PrintCustomer: " + customers);
 
         return (
             <>
@@ -50,15 +38,12 @@ class CovidCases extends Component {
                     <div className="ShowCustomerList mt-20">
                         <div className="container">
                             <div className="row">
-
-
                                 <div className="col-md-11">
 
                                     <br/>
                                     <hr/>
                                 </div>
                             </div>
-
 
                             <CardTablePositive
                                 title="Positive Cases Staff"
