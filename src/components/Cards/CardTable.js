@@ -1,8 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-// components
-
 import CardRow from "./CardRow";
 
 export default function CardTable({
@@ -14,7 +12,7 @@ export default function CardTable({
 
   let customersList;
 
-  console.log(customers);
+  //console.log(customers);
 
   return (
     <>
@@ -39,8 +37,6 @@ export default function CardTable({
           </div>
         </div>
         <div className="block w-full overflow-x-auto">
-          {/* Projects table */}
-          {console.log(customers)}
           <table className="items-center w-full bg-transparent border-collapse">
             <thead>
               <tr>
@@ -127,8 +123,6 @@ export default function CardTable({
                   userStatus={userStatus}
               />)
             }
-
-
 
             </tbody>
           </table>

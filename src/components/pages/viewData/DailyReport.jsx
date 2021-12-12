@@ -1,16 +1,13 @@
 import React, {Component, useState} from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
-import PositiveCard from "./PostiveCard";
-import ViewDataCard from "./ViewDataCard";
+import DatePicker from "react-datepicker";
+
 import IndexNavbar from "../../Navbars/IndexNavbar";
 import Sidebar from "../../Sidebar/Sidebar";
-import CardTable from "../../Cards/CardTable";
-import DatePicker from "react-datepicker";
+import CardTableDaily from "../../Cards/CardTableDaily";
 
 import "react-datepicker/dist/react-datepicker.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import CardTableDaily from "../../Cards/CardTableDaily";
 
 class DailyReport extends Component {
     constructor(props) {
@@ -52,19 +49,6 @@ class DailyReport extends Component {
     render() {
         const customers = this.state.customers;
         console.log("PrintCustomer: " + customers);
-        let customerList;
-
-        if (!customers) {
-            customerList = "there is no customer recored!";
-        } else {
-            //if (customers.status === "customer") {
-            var begindate = new Date();
-            this.state.startDate.setUTCHours(0,0,0,0);
-            begindate = begindate.toISOString();
-            customerList = customers.map((customer, k) => <ViewDataCard customer={customers[k]} key={k} date={begindate}/>);
-            //}
-        }
-
 
         return (
             <>
@@ -94,7 +78,6 @@ class DailyReport extends Component {
                                         name="startDate"
                                         dateFormat="MM/dd/yyyy"
                                     />
-                                    {/*<button className="btn btn-primary">Show Date</button>*/}
                                 </div>
                             </form>
 

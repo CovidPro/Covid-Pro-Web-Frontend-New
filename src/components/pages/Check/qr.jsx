@@ -142,7 +142,6 @@ function QR () {
     return (
         <div>
             {/*https://app.qr-code-generator.com/manage/?aftercreate=1&count=undefined#!/?folder=all*/}
-            {/*<h1 className="text-center text-4xl">QR</h1>*/}
             <br/>
 
             {/*TODO : Get the signal from the Mobile app here and route to Sanitize*/}

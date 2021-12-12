@@ -1,23 +1,10 @@
 import AudioPlayer from "./Audioplayer/AudioPlayer";
 import tracks from "./Audioplayer/tracks";
-import voice from "./Audioplayer/voice";
 import React, {useEffect} from "react";
-import Count from "./count";
 import Wave from "react-wavify";
 
 
 function Announcement() {
-    const [seconds, setSeconds] = React.useState(10);
-
-    useEffect(() => {
-        if (seconds > 0) {
-            setTimeout(() => setSeconds(seconds - 1), 1000);
-        } else {
-            setSeconds('BOOOOM!');
-        }
-    });
-
-
     return (
         <div className="announcement__content">
             <div className="pt-8">
@@ -26,19 +13,13 @@ function Announcement() {
                     Announcement
                 </h1>
             </div>
-            {/*seconds*/}
-            {/*<Count/>*/}
-
 
             <div className="AudioClass pt-16">
                 <AudioPlayer tracks={tracks}/>
-                {/*<AudioPlayer tracks={voice}/>*/}
             </div>
-
 
             <div className="pt-20">
                 <div className=" inset-x-0 bottom-0 ">
-
                     <Wave
                         fill="url(#gradient)"
                         paused={false}
@@ -51,14 +32,12 @@ function Announcement() {
                         }}>
                         <defs>
                             <linearGradient id="gradient" gradientTransform="rotate(45)">
-                                <stop stop-color="#7A5FFF">
-                                    <animate attributeName="stop-color" values="#7A5FFF; #01FF89; #7A5FFF" dur="4s"
-                                             repeatCount="indefinite"></animate>
+                                <stop stopColor="#7A5FFF">
+                                    <animate attributeName="stop-color" values="#7A5FFF; #01FF89; #7A5FFF" dur="4s" repeatCount="indefinite"/>
                                 </stop>
 
-                                <stop stop-color="#01FF89">
-                                    <animate attributeName="stop-color" values="#01FF89; #7A5FFF; #01FF89" dur="4s"
-                                             repeatCount="indefinite"></animate>
+                                <stop stopColor="#01FF89">
+                                    <animate attributeName="stop-color" values="#01FF89; #7A5FFF; #01FF89" dur="4s" repeatCount="indefinite"/>
                                 </stop>
 
                             </linearGradient>
@@ -66,7 +45,6 @@ function Announcement() {
                     </Wave>
                 </div>
             </div>
-
 
         </div>
     );
