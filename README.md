@@ -1,151 +1,83 @@
-# Frontend Code
-    
-    function handleDelete() {
-    console.log("idNum : " + customerp._id)
-    axios
-    .delete('http://localhost:5000/customers/delete', {
-    data: {
-    id: customerp._id,
-    }
-    }
-    )
-    .then(res => {
-    console.log(res);
-    console.log(res.data);
-    })
-    .catch(err => {
-    console.log(err);
-    });
-    
-            axios
-                .post('http://localhost:5000/customers/cre', {
-                    msg: "Your account has been rejected",
-                    msg2: "Your account has been approved",
-                    email :customerp.email+"c",
-                    status: customerp.status,
-                    idNumber : customerp.idNumber+"43",
-                    nic : customerp.nic+"3",
-                    name : customerp.name,
-                    fullname : customerp.fullname,
-                    password : customerp.password,
-                    address: customerp.address,
-                    contactNo: customerp.contactNo,
-                    updatedQRAt: customerp.updatedQRAt,
-                    notification: customerp.notification,
-                    positive: customerp.positive,
-                    timestamp: customerp.timestamp,
-                    notificationRead: customerp.notificationRead,
-                })
-                .then(res => {
-                    console.log(res);
-                    console.log(res.data);
-                })
-                .catch(err => {
-                    console.log(err);
-                });
-        }
+# Covid Pro - Covid Protocol Assistance App For Shops
 
-# BackendCode
+Covid Pro is an integrated system developed with the intention of being used by shops to ensure that thjeir customers and staff follow some of the most essential protocols againts Covid-19 spread.
 
-    // @route POST api/customers
-    // @description Create customer
-    // @access Public
-    router.post("/cre", (req, res) => {
-    console.log(req.body.email);
-    Customer.findOne({ email: req.body.email }).then((customer) => {
-    if (customer) {
-    return res.status(400).json("Email already exists");
-    } else {
-    const newCustomer = new Customer({
-    name: req.body.name,
-    fullname: req.body.fullname,
-    email: req.body.email,
-    password: req.body.password,
-    status: req.body.status,
-    nic: 23232,
-    idNumber: 23232,
-    address: req.body.address,
-    contactNo: req.body.contactNo,
-    updatedQRAt: req.body.updatedQRAt,
-    notification: req.body.notification,
-    positive: req.body.positive,
-    timestamp: req.body.timestamp,
-    notificationRead: req.body.notificationRead,
-    });
-    
-          newCustomer.save().then((customer) => res.json(customer));
-        }
-    });
-    });
+This app concist of 3 main components.
+- Web App for Shops
+- Mobile App for Customers
+- Hardware Part
+
+## Web App for Shops
+
+In this shop can authenticate and access the system. After that the scanning process can be started.
+
+On that When customer eneters to the shop,
+- Facemask is detected
+- Temprature is measured
+- Then Automatic Hand Sanitization is done 
+
+After that customer can enter the shop safely.
+
+![img.png](readme-image/img.png)
+
+![img_1.png](readme-image/img_1.png)
+
+![img_2.png](readme-image/img_2.png)
+
+![img_3.png](readme-image/img_3.png)
+
+![img_4.png](readme-image/img_4.png)
+
+![img_5.png](readme-image/img_5.png)
+
+![img_7.png](readme-image/img_7.png)
+
+![img_8.png](readme-image/img_8.png)
+
+![img_9.png](readme-image/img_9.png)
+
+![img_6.png](readme-image/img_6.png)
 
 
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Mobile App
 
-In the project directory, you can run:
+Authentication and Recognize and store data to shop by QR code scanning.
 
-### `yarn start`
+![img_10.png](readme-image/img_10.png)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+![img_11.png](readme-image/img_11.png)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+![img_12.png](readme-image/img_12.png)
 
-### `yarn test`
+![img_13.png](readme-image/img_13.png)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Hardware Part
 
-### `yarn build`
+Automatic Hand Sanitizer which triggers when user hand is near.
+Temperature Measurement of user.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![img_14.png](readme-image/img_14.png)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+![img_15.png](readme-image/img_15.png)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `yarn eject`
+# Tech Stack
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- MERN
+- Tailwind CSS
+- Tensorflow
+- InVision Studio
+- React Native
+- Arduino
+- Vercel
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# Hardware Part
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Arduino board
+- MLX90614ESF MLX90614 contactless temperature sensor module
+- HC-SR04 ultrasonic distance sensor
+- USB cable for connection
+- Display unit
+- Webcam
